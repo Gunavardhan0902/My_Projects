@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Colorful eCommerce Website</title>
+  <link rel="stylesheet" href="proj1.css" />
+  <script src="proj1.js" defer></script>
+</head>
+<body>
+  <header class="header">
+    <h1>WELCOME TO WHEEL CONNECT</h1>
+    <a href="cart.html" class="cart-icon">🛒 <span class="cart-count">0</span></a>
+  </header>
+
+  <nav class="guna">
+    <a href="home.html">HOME</a>
+    <a href="about.html">ABOUT US</a>
+    <a href="contact.html">CONTACT</a>
+    <a href="signup.html" class="signup-btn">SIGN UP</a>
+    <a href="result.html">SALES REPORT</a>
+  </nav>
+
+  <hr>
+
+  <main class="container">
+    <div class="product">
+      <img src="sedancar.jpg" alt="Mercedes AMG">
+      <h3>Mercedes AMG</h3>
+      <p>$160,000.00</p>
+      <button>BUY</button>
+    </div>
+    <div class="product">
+      <img src="coupecar.jpg" alt="Mercedes">
+      <h3>Mercedes</h3>
+      <p>$170,000.00</p>
+      <button>BUY</button>
+    </div>
+    <div class="product">
+      <img src="suvcar.jpg" alt="SUV">
+      <h3>SUV</h3>
+      <p>$150,000.00</p>
+      <button>BUY</button>
+    </div>
+    <div class="product">
+      <img src="image4.jpg" alt="Porsche">
+      <h3>Porsche</h3>
+      <p>$140,000.00</p>
+      <button>BUY</button>
+    </div>
+    <div class="product">
+      <img src="lambhorghini image5.jpg" alt="Lamborghini">
+      <h3>Lamborghini</h3>
+      <p>$170,000.00</p>
+      <button>BUY</button>
+    </div>
+    <div class="product">
+      <img src="suvcar.jpg" alt="Bugatti">
+      <h3>Bugatti</h3>
+      <p>$160,000.00</p>
+      <button>BUY</button>
+    </div>
+    <div class="product">
+      <img src="GT image7.jpg" alt="GT">
+      <h3>GT</h3>
+      <p>$130,000.00</p>
+      <button>BUY</button>
+    </div>
+    <div class="product">
+      <img src="lambhorghini image5.jpg" alt="BMW">
+      <h3>BMW</h3>
+      <p>$120,000.00</p>
+      <button>BUY</button>
+    </div>
+  </main>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const cartCount = document.querySelector(".cart-count");
+      const buttons = document.querySelectorAll(".product button");
+      const products = document.querySelectorAll(".product");
+
+      // Update cart count
+      const updateCartCount = () => {
+        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        cartCount.textContent = totalItems;
+      };
+
+      // Handle BUY button click
+      buttons.forEach((btn, index) => {
+        btn.addEventListener("click", () => {
+          const product = products[index];
+          const name = product.querySelector("h3").textContent;
+          const priceText = product.querySelector("p").textContent;
+          const image = product.querySelector("img").getAttribute("src");
+          const price = parseFloat(priceText.replace(/[^0-9.]/g, ''));
+
+          const existingItem = cart.find(item => item.name === name);
+          if (existingItem) {
+            existingItem.quantity += 1;
+          } else {
+            cart.push({ name, price, image, quantity: 1 });
+          }
+
+          localStorage.setItem("cart", JSON.stringify(cart));
+          updateCartCount();
+          alert(`${name} added to cart!`);
+        });
+      });
+
+      updateCartCount();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+import pandas as pd
+from datetime import timedelta, datetime
+import random
+
+# Generate fake sales data for 3 products
+products = ["Mercedes AMG", "BMW", "Porsche"]
+start_date = datetime(2024, 1, 1)
+days = 60  # generate 2 months of data
+
+data = []
+for i in range(days):
+    date = start_date + timedelta(days=i)
+    for product in products:
+        quantity = random.randint(0, 5)  # random sales
+        data.append([date.strftime("%Y-%m-%d"), product, quantity])
+
+df = pd.DataFrame(data, columns=["date", "product", "quantity"])
+df.to_csv("sales_data.csv", index=False)
+print("Sample dataset created as sales_data.csv")

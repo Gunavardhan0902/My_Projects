@@ -1,0 +1,25 @@
+{
+    "intents": [
+      {
+        "tag": "greeting",
+        "patterns": ["Hi", "Hello", "Is anyone there?", "Good day"],
+        "responses": ["Hello!", "Hi, how can I help you today?"]
+      },
+      {
+        "tag": "car_inquiry",
+        "patterns": ["Show me latest cars", "I want to buy a car", "Car listings?"],
+        "responses": ["Sure! Visit our car listings page.", "You can browse cars on our website."]
+      },
+      {
+        "tag": "price_inquiry",
+        "patterns": ["How much is a Tesla?", "Price of BMW?", "What does a Honda cost?"],
+        "responses": ["Prices vary by model. Please check our listings for up-to-date prices."]
+      },
+      {
+        "tag": "goodbye",
+        "patterns": ["Bye", "See you later", "Goodbye"],
+        "responses": ["Bye!", "See you next time!", "Goodbye!"]
+      }
+    ]
+  }
+  

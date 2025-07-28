@@ -1,0 +1,26 @@
+{
+    "name": "ecommerce-project",
+    "version": "1.0.0",
+    "description": "Ecommerce website with MongoDB",
+    "main": "server/server.js",
+    "scripts": {
+        "start": "node server/server.js",
+        "server": "nodemon server/server.js",
+        "client": "live-server client",
+        "dev": "concurrently \"npm run server\" \"npm run client\""
+    },
+    "dependencies": {
+        "bcryptjs": "^2.4.3",
+        "body-parser": "^2.2.0",
+        "cors": "^2.8.5",
+        "dotenv": "^16.0.3",
+        "express": "^4.21.2",
+        "jsonwebtoken": "^9.0.0",
+        "mongoose": "^8.14.1",
+        "path": "^0.12.7"
+    },
+    "devDependencies": {
+        "concurrently": "^8.2.0",
+        "nodemon": "^3.0.1"
+    }
+}
